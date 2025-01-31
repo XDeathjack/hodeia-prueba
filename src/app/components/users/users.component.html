@@ -1,1 +1,12 @@
-<p>users works!</p>
+<div class="users-body">
+  @for(user of users; track $index){
+  <div class="user-div">
+    <div class="img-user-div">
+      <img class="img-user" [src]="user.picture.medium" alt="logo" />
+    </div>
+    <div class="name-user-div">
+      <span class="name-user-span">{{ user.name.first }}</span>
+    </div>
+  </div>
+  }
+</div>

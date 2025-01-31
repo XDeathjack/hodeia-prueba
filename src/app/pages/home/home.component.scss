@@ -1,0 +1,24 @@
+@use "_variables" as var;
+
+.home-body {
+  height: 100%;
+  background: var.$grey;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+.users-div,
+.chart-list-div {
+  display: flex;
+  margin: 0 3rem;
+}
+.users-div {
+  overflow-x: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
