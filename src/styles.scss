@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+head,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-weight: 400 !important;
+  font-family: "Arial", sans-serif !important;
+}
