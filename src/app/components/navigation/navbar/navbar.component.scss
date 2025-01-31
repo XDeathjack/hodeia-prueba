@@ -1,1 +1,56 @@
+@use "_variables" as var;
 
+.navbar-body {
+  height: var.$nav-bar-height;
+  background: var.$white;
+  display: flex;
+  align-items: center;
+}
+.list-div {
+  height: 100%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+.list-img {
+  width: 20px;
+  height: 20px;
+}
+.logo-div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-img {
+  width: auto;
+  height: 30px;
+}
+.bell-div {
+  height: 100%;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bell-img {
+  width: 20px;
+  height: 20px;
+}
+.user-div {
+  height: 35px;
+  width: 35px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1.5rem;
+}
+.user-img {
+  width: 35px;
+  height: 35px;
+}
