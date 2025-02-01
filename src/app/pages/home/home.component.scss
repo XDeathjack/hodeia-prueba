@@ -26,12 +26,14 @@
 }
 .chart-list-div {
   flex-grow: 0;
-  gap: 1rem;
+  gap: 2rem;
 }
 .chart-div {
-  width: auto;
-  height: auto;
+  width: 50%;
+  height: 525px;
+  max-height: 525px;
 }
 .list-div {
-  display: flex;
+  width: 100%;
+  height: 100%;
 }

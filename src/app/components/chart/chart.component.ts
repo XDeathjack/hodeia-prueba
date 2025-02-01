@@ -44,7 +44,6 @@ export class ChartComponent implements OnInit, OnDestroy {
   getAgeRanges(users: User[]) {
     this.resetAgeRanges();
     for (const user of users) {
-      console.log(user.dob);
       if (user.dob.age < 21) {
         this.lessAge++;
       } else if (user.dob.age > 55) {
@@ -53,8 +52,6 @@ export class ChartComponent implements OnInit, OnDestroy {
         this.middleAge++;
       }
     }
-
-    console.log(this.lessAge, this.middleAge, this.greaterAge);
 
     this.createChart();
   }
@@ -90,7 +87,7 @@ export class ChartComponent implements OnInit, OnDestroy {
       options: {
         responsive: true,
         maintainAspectRatio: true,
-        cutout: 150,
+        cutout: 135,
         plugins: {
           legend: {
             labels: {

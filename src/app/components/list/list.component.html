@@ -1,1 +1,73 @@
-<p>list works!</p>
+<div class="list-body">
+  <div class="list-title-div">
+    <h2 class="list-h2">Lista</h2>
+  </div>
+  <div class="list-filters-div">
+    <div
+      class="list-filter-div"
+      [class.active]="selectedFilter === 0"
+      (click)="selectFilter(0)"
+    >
+      <span class="list-filter-span">All</span>
+    </div>
+    <div
+      class="list-filter-div"
+      [class.active]="selectedFilter === 1"
+      (click)="selectFilter(1)"
+    >
+      <span class="list-filter-span">{{ "< 21" }}</span>
+    </div>
+    <div
+      class="list-filter-div"
+      [class.active]="selectedFilter === 2"
+      (click)="selectFilter(2)"
+    >
+      <span class="list-filter-span">{{ "21-55" }}</span>
+    </div>
+    <div
+      class="list-filter-div"
+      [class.active]="selectedFilter === 3"
+      (click)="selectFilter(3)"
+    >
+      <span class="list-filter-span">{{ "> 55" }}</span>
+    </div>
+  </div>
+
+  <div class="list-table-div">
+    <div class="list-table-titles-div">
+      <div class="list-table-title-div">
+        <span class="list-table-title-span">Nombre</span>
+      </div>
+      <div class="list-table-title-div">
+        <span class="list-table-title-span">Apellido</span>
+      </div>
+      <div class="list-table-title-div">
+        <span class="list-table-title-span">Fecha nacimiento</span>
+      </div>
+      <div class="list-table-title-div">
+        <span class="list-table-title-span">Rango</span>
+      </div>
+    </div>
+    @for(user of usersTable; track $index){
+    <div class="list-table-datas-div">
+      <div class="list-table-data-div">
+        <span class="list-table-data-span">{{ user.name }}</span>
+      </div>
+      <div class="list-table-data-div">
+        <span class="list-table-data-span">{{ user.lastName }}</span>
+      </div>
+      <div class="list-table-data-div">
+        <span class="list-table-data-span">{{ user.date }}</span>
+      </div>
+      <div class="list-table-data-div">
+        <div
+          class="list-table-data-range"
+          [class.red]="user.age < 21"
+          [class.yellow]="user.age >= 21 && user.age <= 55"
+          [class.green]="user.age > 55"
+        ></div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

@@ -1,6 +1,7 @@
 @use "_variables" as var;
 
 .chart-body {
+  height: 100%;
   display: flex;
   background: var.$white;
   padding: 1.5rem;
@@ -8,7 +9,7 @@
   border-radius: 0.5cm;
 }
 .chart-title-div {
-  height: 100%;
+  height: auto;
   border-bottom: 1px solid rgb(0, 0, 0, 0.3);
   margin-bottom: 2rem;
 }
@@ -21,8 +22,8 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  width: 450px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
 }
 .chart {
   display: flex !important;

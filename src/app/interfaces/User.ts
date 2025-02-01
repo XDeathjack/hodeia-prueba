@@ -54,3 +54,10 @@ export interface User {
   //     date: string;
   //   };
 }
+
+export interface UserTable {
+  name: string;
+  lastName: string;
+  date: string;
+  age: number;
+}
