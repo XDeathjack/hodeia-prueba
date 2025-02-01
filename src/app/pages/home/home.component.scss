@@ -1,11 +1,11 @@
 @use "_variables" as var;
 
 .home-body {
+  min-height: calc(100vh - var.$nav-bar-height);
   height: 100%;
   background: var.$grey;
   display: flex;
   flex-flow: column;
-  justify-content: center;
 }
 .users-div,
 .chart-list-div {
@@ -13,6 +13,8 @@
   margin: 0 3rem;
 }
 .users-div {
+  min-height: 200px;
+  flex: 0;
   overflow-x: auto;
 
   scrollbar-width: none;
@@ -21,4 +23,15 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+.chart-list-div {
+  flex-grow: 0;
+  gap: 1rem;
+}
+.chart-div {
+  width: auto;
+  height: auto;
+}
+.list-div {
+  display: flex;
 }
