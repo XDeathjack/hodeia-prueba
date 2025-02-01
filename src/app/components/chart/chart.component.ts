@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   HostListener,
@@ -24,7 +23,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './chart.component.html',
   styleUrl: './chart.component.scss',
 })
-export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ChartComponent implements OnInit, OnDestroy {
   private usersSubscription: Subscription = new Subscription();
 
   public lessAge: number = 0;
@@ -45,10 +44,6 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
         this.getAgeRanges(users);
       }
     );
-  }
-
-  ngAfterViewInit(): void {
-    // this.checkScreenSize();
   }
 
   getAgeRanges(users: User[]) {
