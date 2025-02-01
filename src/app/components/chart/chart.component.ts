@@ -2,11 +2,17 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostListener,
   OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { Chart, ChartConfiguration, registerables } from 'chart.js';
+import {
+  Chart,
+  ChartConfiguration,
+  ChartOptions,
+  registerables,
+} from 'chart.js';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/User';
 import { Subscription } from 'rxjs';
@@ -18,7 +24,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './chart.component.html',
   styleUrl: './chart.component.scss',
 })
-export class ChartComponent implements OnInit, OnDestroy {
+export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
   private usersSubscription: Subscription = new Subscription();
 
   public lessAge: number = 0;
@@ -39,6 +45,10 @@ export class ChartComponent implements OnInit, OnDestroy {
         this.getAgeRanges(users);
       }
     );
+  }
+
+  ngAfterViewInit(): void {
+    // this.checkScreenSize();
   }
 
   getAgeRanges(users: User[]) {
@@ -72,7 +82,7 @@ export class ChartComponent implements OnInit, OnDestroy {
       this.chart.destroy();
     }
 
-    const config: ChartConfiguration<'doughnut'> = {
+    const config: ChartConfiguration = {
       type: 'doughnut',
       data: {
         labels: ['<21', '21-55', '55>'],
@@ -84,26 +94,44 @@ export class ChartComponent implements OnInit, OnDestroy {
           },
         ],
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        cutout: 135,
-        plugins: {
-          legend: {
-            labels: {
-              boxHeight: 15,
-              boxWidth: 40,
-              font: {
-                size: 14,
-              },
-              color: '#333333',
+      options: this.getChartOptions(),
+    };
+
+    this.chart = new Chart(ctx, config);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.updateChartOptions();
+  }
+
+  updateChartOptions() {
+    if (this.chart) {
+      this.chart.options = this.getChartOptions();
+      this.chart.update();
+    }
+  }
+
+  getChartOptions(): ChartOptions<'doughnut'> {
+    return {
+      responsive: true,
+      maintainAspectRatio: true,
+      cutout: window.innerWidth < 1300 ? 75 : 135,
+      plugins: {
+        legend: {
+          position: window.innerWidth < 1300 ? 'left' : 'top',
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'rectRounded',
+            boxHeight: 15,
+            boxWidth: 40,
+            font: {
+              size: 14,
             },
           },
         },
       },
     };
-
-    this.chart = new Chart(ctx, config);
   }
 
   ngOnDestroy(): void {

@@ -38,3 +38,37 @@
   font-size: 18px;
   color: var.$black;
 }
+
+@media (max-width: 1300px) {
+  .users-body {
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    gap: 2rem;
+  }
+  .user-div {
+    margin: 3rem 0;
+    padding: 1rem;
+    background: var.$white;
+    height: calc(125px - 1rem);
+    width: calc(125px - 1rem);
+    border-radius: 0.65cm;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+  .img-user-div {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .name-user-div {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
